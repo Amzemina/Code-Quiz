@@ -4,7 +4,7 @@ var input
 
 
 function timer() {
-    var timeLeft = 5;
+    var timeLeft = 60;
   
     // TODO: Use the `setInterval()` method to call a function to be executed every 1000 milliseconds
     var timerInterval = setInterval(function () {
@@ -16,4 +16,4 @@ function timer() {
       }          
     }, 1000);
   }
-  timer();
+  
