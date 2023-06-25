@@ -13,14 +13,20 @@
     <header>
         <nav>
             <a href="high scores">View high scores</a>
-            <h1 id="timer">Timer:</h1>
+            <div id="timer">Timer:</div>
         </nav>
     </header>
 
     <main>
         <h1>Code Quiz</h1>
+        <p>Welcome! Take this code quiz to test your knowledge on HTML, CSS and JavaScript! Beware, if you answer incorrectly, 10 seconds will be deducted. Good Luck!</p>
         <p id="questions"></p>
-        <ul id="choices"></ul>
+        <ul id="choices">
+            <li><button id="choiceA"></button></li>
+            <li><button id="choiceB"></button></li>
+            <li><button id="choiceC"></button></li>
+            <li><button id="choiceD"></button></li>
+        </ul>
         <button onclick="timer()">Start</button>
     </main>
     <script src="assets/script.js"></script>
