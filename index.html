@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="./assets/reset.css" />
     <link rel="stylesheet" href="./assets/style.css" />
-    
+
 </head>
 
 <body>
@@ -19,21 +19,32 @@
     </header>
 
     <main>
-        <h1>Code Quiz</h1>
-        <p>Welcome! Take this code quiz to test your knowledge on HTML, CSS and JavaScript! There are 10 questions and you have 60 seconds! Beware, if you answer incorrectly, 10 seconds will be deducted. Good Luck!</p>
-        <p id="questions"></p>
-        <ul id="choices">
-            <li><button id="choiceA" onclick="checkAns(value)"></button></li>
-            <li><button id="choiceB" onclick="checkAns(value)"></button></li>
-            <li><button id="choiceC" onclick="checkAns(value)"></button></li>
-            <li><button id="choiceD" onclick="checkAns(value)"></button></li>
-        </ul>
-        <button id="startBtn" onclick="startQuiz()">Start</button>
+        <div id="intro">
+            <h1>Code Quiz</h1>
+            <p>Welcome! Take this code quiz to test your knowledge on HTML, CSS and JavaScript! There are 10 questions
+                and you have 60 seconds! Beware, if you answer incorrectly, 10 seconds will be deducted. Good Luck!</p>
+            <button id="startBtn" onclick="startQuiz()">Start</button>
+        </div>
+        <div id="quiz" class="hidden">
+            <p id="questions"></p>
+            <ul id="choices">
+                <li><button id="choiceA" onclick="checkAns(value)"></button></li>
+                <li><button id="choiceB" onclick="checkAns(value)"></button></li>
+                <li><button id="choiceC" onclick="checkAns(value)"></button></li>
+                <li><button id="choiceD" onclick="checkAns(value)"></button></li>
+            </ul>
+        </div>
+        <div id="leaderboard" class="hidden">
+            <!-- Leaderboard -->
+            Leaderboard!
+            
+        </div>
+
     </main>
     <script src="assets/script.js"></script>
-<footer>
-    
-</footer>
+    <footer>
+
+    </footer>
 
 </body>
 

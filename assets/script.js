@@ -1,21 +1,29 @@
 //Timer var and function
 var timerEl = document.getElementById("timer");
 var timeLeft = 60;
+var timerInterval;
+
+var leaderBoardEl = document.getElementById("leaderboard");
+
+
 
 function timer() {
-    var timerInterval = setInterval(function () {
-      
-      if(timeLeft >= 0) {
-        timerEl.textContent = "Timer: " + timeLeft;
-        console.log(timeLeft);
+     timerInterval = setInterval(function () {
+     timerEl.textContent = "Timer: " + timeLeft;
+      if(timeLeft > 0) {
         timeLeft--;
-      }          
+      } else {
+        endQuiz();
+      }         
     }, 1000);
   }
 
   function deductTime() {
-    timeLeft = timeLeft -10; {
-        console.log(timeLeft);
+    if (timeLeft -10 <= 0 ) {
+        timeLeft = 0
+        endQuiz();
+    } else {
+        timeLeft = timeLeft -10; 
     }
   }
 
@@ -84,18 +92,30 @@ const questions = [
 
   function loadQ() {
     currentQuestion++;
-    questionEL.textContent = questions[currentQuestion].question;
-    choiceAEL.textContent = questions[currentQuestion].choices[0];
-    choiceBEL.textContent = questions[currentQuestion].choices[1];
-    choiceCEL.textContent = questions[currentQuestion].choices[2];
-    choiceDEL.textContent = questions[currentQuestion].choices[3];
+    if (isCurrentQuestionValid()){
+        questionEL.textContent = questions[currentQuestion].question;
+        choiceAEL.textContent = questions[currentQuestion].choices[0];
+        choiceBEL.textContent = questions[currentQuestion].choices[1];
+        choiceCEL.textContent = questions[currentQuestion].choices[2];
+        choiceDEL.textContent = questions[currentQuestion].choices[3];
 
-    choiceAEL.value = questions[currentQuestion].choices[0];
-    choiceBEL.value = questions[currentQuestion].choices[1];
-    choiceCEL.value = questions[currentQuestion].choices[2];
-    choiceDEL.value = questions[currentQuestion].choices[3];
+        choiceAEL.value = questions[currentQuestion].choices[0];
+        choiceBEL.value = questions[currentQuestion].choices[1];
+        choiceCEL.value = questions[currentQuestion].choices[2];
+        choiceDEL.value = questions[currentQuestion].choices[3];
+    } else {
+        endQuiz();
+    }
+
   }
 
+  function isCurrentQuestionValid() {
+    if (currentQuestion >= questions.length) {
+        return false;
+    } else {
+        return true;
+    }
+  }
 
   function checkAns(chosenAns) {
     if (chosenAns == questions[currentQuestion].answer) {
@@ -104,18 +124,27 @@ const questions = [
         deductTime();
         console.log("incorrect")
     };
+    loadQ();
   }
 
+function endQuiz() {
+    clearInterval(timerInterval);
+    console.log("quiz ended");
+    leaderBoardEl.classList.remove("hidden")
+    introDivEl.classList.add("hidden");
+    quizDivEl.classList.add("hidden");
+}
   
 //Start Quiz function
-var startBtnEl = document.getElementById("startBtn");
+var introDivEl = document.getElementById("intro");
+var quizDivEl = document.getElementById("quiz");
 
   function startQuiz() {
-    startBtnEl.classList.add("hidden");
+    introDivEl.classList.add("hidden");
+    quizDivEl.classList.remove("hidden");
     loadQ();
     timer();
-    
-  }
+}
 
   
 
