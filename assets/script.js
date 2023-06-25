@@ -2,7 +2,7 @@
 var timerEl = document.getElementById("timer");
 
 function timer() {
-    var timeLeft = 60;
+    var timeLeft = 5;
   
     var timerInterval = setInterval(function () {
       
@@ -70,15 +70,25 @@ const questions = [
   ];
 
   var questionEL = document.getElementById("questions");
+  var choiceAEL = document.getElementById("choiceA");
+  var choiceBEL = document.getElementById("choiceB");
+  var choiceCEL = document.getElementById("choiceC");
+  var choiceDEL = document.getElementById("choiceD");
   var currentQuestion = -1;
 
   function loadQ() {
     currentQuestion++;
+    questionEL.textContent = questions[currentQuestion].question;
+    choiceAEL.textContent = questions[currentQuestion].choices[0];
+    choiceBEL.textContent = questions[currentQuestion].choices[1];
+    choiceCEL.textContent = questions[currentQuestion].choices[2];
+    choiceDEL.textContent = questions[currentQuestion].choices[3];
   }
+
   
 //Start Quiz function
   function startQuiz() {
-    timer();
     loadQ();
+    timer();
   }
   
