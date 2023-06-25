@@ -1,9 +1,8 @@
 //Timer var and function
 var timerEl = document.getElementById("timer");
+var timeLeft = 60;
 
 function timer() {
-    var timeLeft = 5;
-  
     var timerInterval = setInterval(function () {
       
       if(timeLeft >= 0) {
@@ -13,6 +12,13 @@ function timer() {
       }          
     }, 1000);
   }
+
+  function deductTime() {
+    timeLeft = timeLeft -10; {
+        console.log(timeLeft);
+    }
+  }
+
 
   
 //Questions and function
@@ -83,12 +89,34 @@ const questions = [
     choiceBEL.textContent = questions[currentQuestion].choices[1];
     choiceCEL.textContent = questions[currentQuestion].choices[2];
     choiceDEL.textContent = questions[currentQuestion].choices[3];
+
+    choiceAEL.value = questions[currentQuestion].choices[0];
+    choiceBEL.value = questions[currentQuestion].choices[1];
+    choiceCEL.value = questions[currentQuestion].choices[2];
+    choiceDEL.value = questions[currentQuestion].choices[3];
+  }
+
+
+  function checkAns(chosenAns) {
+    if (chosenAns == questions[currentQuestion].answer) {
+        console.log("correct")
+    } else {
+        deductTime();
+        console.log("incorrect")
+    };
   }
 
   
 //Start Quiz function
+var startBtnEl = document.getElementById("startBtn");
+
   function startQuiz() {
+    startBtnEl.classList.add("hidden");
     loadQ();
     timer();
+    
   }
+
+  
+
   
