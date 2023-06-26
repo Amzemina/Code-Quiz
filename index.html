@@ -21,39 +21,49 @@
 
     <main>
         <!-- Intro page -->
-        <div id="intro">
-            <h1>Code Quiz</h1>
-            <p>Welcome! Take this code quiz to test your knowledge on HTML, CSS and JavaScript! There are 10 questions
-                and you have 60 seconds! Beware, if you answer incorrectly, 10 seconds will be deducted. Good Luck!</p>
-            <button id="startBtn" onclick="startQuiz()">Start</button>
-        </div>
+        <section>
+            <div id="intro">
+                <h1>Code Quiz</h1>
+                <p>Welcome! Take this code quiz to test your knowledge on HTML, CSS and JavaScript! There are 10
+                    questions
+                    and you have 60 seconds! Beware, if you answer incorrectly, 10 seconds will be deducted. Good Luck!
+                </p>
+                <button id="startBtn" onclick="startQuiz()">Start</button>
+            </div>
+        </section>
         <!--Quiz page-->
-        <div id="quiz" class="hidden">
-            <p id="questions"></p>
-            <ul id="choices">
-                <li><button id="choiceA" onclick="checkAns(value)"></button></li>
-                <li><button id="choiceB" onclick="checkAns(value)"></button></li>
-                <li><button id="choiceC" onclick="checkAns(value)"></button></li>
-                <li><button id="choiceD" onclick="checkAns(value)"></button></li>
-            </ul>
-            <div id="correct" class="hidden">Correct</div>
-            <div id="incorrect" class="hidden">Incorrect</div>
-        </div>
+        <section>
+            <div id="quiz" class="hidden">
+                <p id="questions"></p>
+                <ul id="choices">
+                    <li><button id="choiceA" onclick="checkAns(value)"></button></li>
+                    <li><button id="choiceB" onclick="checkAns(value)"></button></li>
+                    <li><button id="choiceC" onclick="checkAns(value)"></button></li>
+                    <li><button id="choiceD" onclick="checkAns(value)"></button></li>
+                </ul>
+                <div id="correct" class="hidden">Correct</div>
+                <div id="incorrect" class="hidden">Incorrect</div>
+            </div>
+        </section>
         <!--Score page where initials are entered-->
-        <div id="scorepage" class="hidden">
-            <h1>Great Job!</h1>
-            <p>Your final score is <span id="score"></span>/60</p>
-            <div>Enter your initials:</div>
-            <input type="text" id="initials">
-            <button onclick="inputScore()">Submit Score</button>
-        </div>
+        <section id="scoreinput">
+            <div id="scorepage" class="hidden">
+                <h1>Great Job!</h1>
+                <p>Your final score is <span id="score"></span>/60</p>
+                <div>Enter your initials:</div>
+                <input type="text" id="initials">
+                <button onclick="inputScore()">Submit Score</button>
+            </div>
+        </section>
         <!--Highscores page and back to intro button-->
-        <div id="leaderboard" class="hidden">
-            <h1>leaderboard</h1>
-            <div id="scorelist"></div>
-            <button onclick="showIntro()">Back to quiz</button>
-            <button id="clearButton" onclick="clearButton()" >Clear Scores</button>
-        </div>
+        <section id="highscores">
+            <div id="leaderboard" class="hidden">
+                <h1>leaderboard</h1>
+                <div id="scorelist"></div>
+                <button onclick="showIntro()">Back to quiz</button>
+                <button id="clearButton" onclick="clearButton()">Clear Scores</button>
+            </div>
+        </section>
 
     </main>
     <script src="assets/script.js"></script>

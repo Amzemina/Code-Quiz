@@ -22,8 +22,6 @@ nav a:hover {
 main {
     margin: 5%;
     padding: 5%;
-    display: flex;
-    justify-content: space-between;
 }
 
 h1 {
@@ -57,5 +55,21 @@ button {
 #scorelist {
     font-size: 20px;
     font-family: sans-serif;
+}
+
+#highscores {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+#scoreinput {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
 
