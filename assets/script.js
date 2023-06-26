@@ -1,10 +1,13 @@
+//All global variables 
 var timerEl = document.getElementById("timer");
 var timeLeft = 60;
 var timerInterval;
 
-var scorePageEl = document.getElementById("scorepage")
+var initialsEl = document.getElementById("initials");
+var scoreListEl = document.getElementById("scorelist");
+var scorePageEl = document.getElementById("scorepage");
 var leaderBoardEl = document.getElementById("leaderboard");
-var scoreEl = document.getElementById("score")
+var scoreEl = document.getElementById("score");
 
 var questionEL = document.getElementById("questions");
 var choiceAEL = document.getElementById("choiceA");
@@ -15,38 +18,8 @@ var currentQuestion = -1;
 
 var introDivEl = document.getElementById("intro");
 var quizDivEl = document.getElementById("quiz");
-var initialsEl = document.getElementById("initials");
-var scoreListEl = document.getElementById("scorelist");
 
-
-function refTimer() {
-    timerEl.textContent = "Timer: " + timeLeft;
-}
-
-function timer() {
-    timerInterval = setInterval(function () {
-        if (timeLeft > 0) {
-            timeLeft--;
-        } else {
-            endQuiz();
-        }
-        refTimer();
-    }, 1000);
-}
-
-function deductTime() {
-    if (timeLeft - 10 <= 0) {
-        timeLeft = 0
-        endQuiz();
-    } else {
-        timeLeft = timeLeft - 10;
-    }
-    refTimer();
-}
-
-
-
-//Questions and function
+//Questions and answers
 const questions = [
     {
         question: "1. Which tag is used to define an unordered list in HTML?",
@@ -100,8 +73,41 @@ const questions = [
     }
 ];
 
+//Start quiz function
+function startQuiz() {
+    introDivEl.classList.add("hidden");
+    quizDivEl.classList.remove("hidden");
+    loadQ();
+    timer();
+}
 
+//Timer functions
+function refTimer() {
+    timerEl.textContent = "Timer: " + timeLeft;
+}
 
+function timer() {
+    timerInterval = setInterval(function () {
+        if (timeLeft > 0) {
+            timeLeft--;
+        } else {
+            endQuiz();
+        }
+        refTimer();
+    }, 1000);
+}
+//Function to deduct time when answer is incorrect
+function deductTime() {
+    if (timeLeft - 10 <= 0) {
+        timeLeft = 0
+        endQuiz();
+    } else {
+        timeLeft = timeLeft - 10;
+    }
+    refTimer();
+}
+
+//Loads questions and choices
 function loadQ() {
     currentQuestion++;
     if (isCurrentQuestionValid()) {
@@ -119,7 +125,7 @@ function loadQ() {
         endQuiz();
     }
 }
-
+//Checks question length, stops running after all questions have been answered
 function isCurrentQuestionValid() {
     if (currentQuestion >= questions.length) {
         return false;
@@ -127,7 +133,7 @@ function isCurrentQuestionValid() {
         return true;
     }
 }
-
+//Checks if answer is correct or incorrect--deducts time. Loads next question
 function checkAns(chosenAns) {
     if (chosenAns == questions[currentQuestion].answer) {
     } else {
@@ -135,7 +141,7 @@ function checkAns(chosenAns) {
     };
     loadQ();
 }
-
+//Ends quiz
 function endQuiz() {
     clearInterval(timerInterval);
     scoreEl.textContent = timeLeft;
@@ -143,19 +149,7 @@ function endQuiz() {
     introDivEl.classList.add("hidden");
     quizDivEl.classList.add("hidden");
 }
-
-//Start Quiz function
-
-
-function startQuiz() {
-    introDivEl.classList.add("hidden");
-    quizDivEl.classList.remove("hidden");
-    loadQ();
-    timer();
-}
-
-//leaderboard
-
+//Shows scores after quiz has ended and is attached to link on top of page
 function showLeaderboard() {
     leaderBoardEl.classList.remove("hidden");
     scorePageEl.classList.add("hidden");
@@ -163,28 +157,25 @@ function showLeaderboard() {
     quizDivEl.classList.add("hidden");
     refreshScores()
 }
-
+//Saves and sorts scores
 function saveScores(allScores) {
     allScores.sort((a, b) => {
         return b.score - a.score
     });
     localStorage.setItem("allScores", JSON.stringify(allScores));
-
 }
-
-
+//Inputs initials and time
 function inputScore() {
     var allScores = getScores();
     allScores.push({ initials: initialsEl.value, score: timeLeft });
     saveScores(allScores);
     showLeaderboard()
 }
-
+//Gets scores from local storage
 function getScores() {
     return JSON.parse(localStorage.getItem("allScores")) || [];
 }
-
-
+//Refresh scores, deletes duplicated ones
 function refreshScores() {
     var refAllScores = getScores()
     var delScoreList = scoreListEl.querySelectorAll("*")
@@ -199,7 +190,7 @@ function refreshScores() {
         scoreListEl.appendChild(entryContainerEl);
     })
 }
-
+//Goes back to beginning page
 function quizPage() {
     leaderBoardEl.classList.add("hidden");
     scorePageEl.classList.add("hidden");

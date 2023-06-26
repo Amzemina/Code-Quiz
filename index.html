@@ -12,6 +12,7 @@
 
 <body>
     <header>
+        <!--Nav with link to leaderboard and a timer is shown-->
         <nav>
             <a onclick="showLeaderboard()">View Leaderboard</a>
             <div id="timer">Timer:</div>
@@ -19,12 +20,14 @@
     </header>
 
     <main>
+        <!-- Intro page -->
         <div id="intro">
             <h1>Code Quiz</h1>
             <p>Welcome! Take this code quiz to test your knowledge on HTML, CSS and JavaScript! There are 10 questions
                 and you have 60 seconds! Beware, if you answer incorrectly, 10 seconds will be deducted. Good Luck!</p>
             <button id="startBtn" onclick="startQuiz()">Start</button>
         </div>
+        <!--Quiz page-->
         <div id="quiz" class="hidden">
             <p id="questions"></p>
             <ul id="choices">
@@ -34,13 +37,15 @@
                 <li><button id="choiceD" onclick="checkAns(value)"></button></li>
             </ul>
         </div>
+        <!--Score page where initials are entered-->
         <div id="scorepage" class="hidden">
             <h1>Great Job!</h1>
             <p>Your final score is <span id="score"></span>/60</p>
             <div>Enter your initials:</div>
-            <input type = "text" id="initials"> 
+            <input type="text" id="initials">
             <button onclick="inputScore()">Submit Score</button>
         </div>
+        <!--Highscores page and back to intro button-->
         <div id="leaderboard" class="hidden">
             <h1>leaderboard</h1>
             <div id="scorelist"></div>
