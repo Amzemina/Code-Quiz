@@ -157,19 +157,12 @@ function showLeaderboard() {
     quizDivEl.classList.add("hidden");
     refreshScores()
 }
-//Saves and sorts scores
-function saveScores(allScores) {
-    allScores.sort((a, b) => {
-        return b.score - a.score
-    });
-    localStorage.setItem("allScores", JSON.stringify(allScores));
-}
-//Inputs initials and time
-function inputScore() {
-    var allScores = getScores();
-    allScores.push({ initials: initialsEl.value, score: timeLeft });
-    saveScores(allScores);
-    showLeaderboard()
+//Goes back to beginning page
+function showIntro() {
+    leaderBoardEl.classList.add("hidden");
+    scorePageEl.classList.add("hidden");
+    introDivEl.classList.remove("hidden");
+    quizDivEl.classList.add("hidden");
 }
 //Gets scores from local storage
 function getScores() {
@@ -190,10 +183,17 @@ function refreshScores() {
         scoreListEl.appendChild(entryContainerEl);
     })
 }
-//Goes back to beginning page
-function quizPage() {
-    leaderBoardEl.classList.add("hidden");
-    scorePageEl.classList.add("hidden");
-    introDivEl.classList.remove("hidden");
-    quizDivEl.classList.add("hidden");
+//Sorts scores descending and saves to local storage
+function saveScores(allScores) {
+    allScores.sort((a, b) => {
+        return b.score - a.score
+    });
+    localStorage.setItem("allScores", JSON.stringify(allScores));
+}
+//Inputs initials and time
+function inputScore() {
+    var allScores = getScores();
+    allScores.push({ initials: initialsEl.value, score: timeLeft });
+    saveScores(allScores);
+    showLeaderboard()
 }
