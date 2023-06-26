@@ -84,7 +84,7 @@ function startQuiz() {
     refTimer();
     timer();
 }
-//Timer functions
+//Timer refresh
 function refTimer() {
     timerEl.textContent = "Timer: " + timeLeft;
 }
@@ -93,7 +93,7 @@ function resetTimer() {
     timeLeft = 60;
     currentQuestion = -1;
 }
-
+//Timer function
 function timer() {
     timerInterval = setInterval(function () {
         if (timeLeft > 0) {
@@ -218,3 +218,8 @@ function inputScore() {
     saveScores(allScores);
     showLeaderboard()
 }
+//Clear Scores
+function clearButton() {
+  localStorage.setItem('allScores', JSON.stringify([]));
+  refreshScores()
+};

@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html {
+    height: 100%;
+  }
+  
+  body {
+    max-height: 100%;
+    line-height: 2;
+    font-family: sans-serif;
+  }
+  
+  
+  input, select, option, optgroup, textarea, button,
+  pre, code {
+    font-size: 100%;
+    font-family: sans-serif
+  }
