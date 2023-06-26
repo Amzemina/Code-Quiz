@@ -1,14 +1,14 @@
 
-// 3. make a button to go back to the start page from leaderboard and hide / show the appropriate panels
-
-
-
 //Timer var and function
 var timerEl = document.getElementById("timer");
 var timeLeft = 60;
 var timerInterval;
 var scorePageEl = document.getElementById("scorepage")
 var leaderBoardEl = document.getElementById("leaderboard");
+
+var scoreEl = document.getElementById("score")
+
+
 
 function refTimer() {
     timerEl.textContent = "Timer: " + timeLeft;
@@ -137,6 +137,7 @@ const questions = [
 
 function endQuiz() {
     clearInterval(timerInterval);
+    scoreEl.textContent = timeLeft;
     console.log("quiz ended");
     scorePageEl.classList.remove("hidden");
     introDivEl.classList.add("hidden");
