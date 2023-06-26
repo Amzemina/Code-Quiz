@@ -1,3 +1,8 @@
+
+// 3. make a button to go back to the start page from leaderboard and hide / show the appropriate panels
+
+
+
 //Timer var and function
 var timerEl = document.getElementById("timer");
 var timeLeft = 60;
@@ -5,16 +10,18 @@ var timerInterval;
 var scorePageEl = document.getElementById("scorepage")
 var leaderBoardEl = document.getElementById("leaderboard");
 
-
+function refTimer() {
+    timerEl.textContent = "Timer: " + timeLeft;
+}
 
 function timer() {
      timerInterval = setInterval(function () {
-     timerEl.textContent = "Timer: " + timeLeft;
       if(timeLeft > 0) {
         timeLeft--;
       } else {
         endQuiz();
-      }         
+      }    
+      refTimer();     
     }, 1000);
   }
 
@@ -25,6 +32,7 @@ function timer() {
     } else {
         timeLeft = timeLeft -10; 
     }
+    refTimer();
   }
 
 
@@ -146,7 +154,7 @@ var quizDivEl = document.getElementById("quiz");
     timer();
 }
 
-// Score leaderboard
+//leaderboard
 
 function showLeaderboard() {
     leaderBoardEl.classList.remove("hidden");
@@ -179,11 +187,24 @@ function getScores() {
 var scoreListEl = document.getElementById("scorelist");
 function refreshScores() {
     var refAllScores = getScores()
+    var delScoreList = scoreListEl.querySelectorAll("*")
+    
+    delScoreList.forEach(oldscore=>{
+        oldscore.remove();
+    })
+
     refAllScores.forEach(scoreEntry=>{
       var entryContainerEl = document.createElement("div")
       entryContainerEl.textContent = scoreEntry.initials + " " + scoreEntry.score;
       scoreListEl.appendChild(entryContainerEl);
     })
+}
+
+function quizPage() {
+    leaderBoardEl.classList.add("hidden");
+    scorePageEl.classList.add("hidden");
+    introDivEl.classList.remove("hidden");
+    quizDivEl.classList.add("hidden");
 }
 
 
