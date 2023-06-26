@@ -1,11 +1,12 @@
+/* section display */
 .hidden {
  display: none;
 }
-
+/* everything */
 * {
     font-family: sans-serif;
 }
-
+/* nav  */
 nav {
     background-color:cadetblue;
     display: flex;
@@ -18,7 +19,7 @@ nav a:hover {
     cursor: pointer;
     color:darkslateblue;
 }
-
+/* body */
 body {
     background-color: rgb(222, 222, 222);
 }
@@ -37,11 +38,11 @@ p {
     font-size: 30px;
     line-height: 1.5;
 }
-
+/* choices */
 ul {
     list-style: none;
 }
-
+/* all buttons */
 button:hover {
     color:black;
     background-color: lightcoral;
@@ -55,12 +56,12 @@ button {
     background-color:lightpink;
     color: black;
 }
-
+/* score list */
 #scorelist {
     font-size: 20px;
     font-family: sans-serif;
 }
-
+/* leaderboard page */
 #highscores {
     display: flex;
     text-align: center;
@@ -68,7 +69,7 @@ button {
     align-items: center;
     margin: auto;
 }
-
+/* enter initial page */
 #scoreinput {
     display: flex;
     text-align: center;
@@ -76,7 +77,7 @@ button {
     align-items: center;
     margin: auto;
 }
-
+/* Answers */
 #correct {
     font-style: italic;
     text-decoration: overline;
