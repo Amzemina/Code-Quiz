@@ -2,7 +2,7 @@
 var timerEl = document.getElementById("timer");
 var timeLeft = 60;
 var timerInterval;
-
+var scorePageEl = document.getElementById("scorepage")
 var leaderBoardEl = document.getElementById("leaderboard");
 
 
@@ -130,7 +130,7 @@ const questions = [
 function endQuiz() {
     clearInterval(timerInterval);
     console.log("quiz ended");
-    leaderBoardEl.classList.remove("hidden")
+    scorePageEl.classList.remove("hidden");
     introDivEl.classList.add("hidden");
     quizDivEl.classList.add("hidden");
 }
@@ -146,6 +146,45 @@ var quizDivEl = document.getElementById("quiz");
     timer();
 }
 
-  
+// Score leaderboard
 
-  
+function showLeaderboard() {
+    leaderBoardEl.classList.remove("hidden");
+    scorePageEl.classList.add("hidden");
+    introDivEl.classList.add("hidden");
+    quizDivEl.classList.add("hidden");
+    refreshScores() 
+}
+
+function saveScores(allScores) {
+    allScores.sort((a,b)=>{
+        return b.score-a.score
+    });
+    localStorage.setItem("allScores", JSON.stringify(allScores));
+
+}
+
+var initialsEl = document.getElementById("initials");
+function inputScore() {
+    var allScores = getScores();
+    allScores.push( {initials: initialsEl.value, score: timeLeft});
+    saveScores(allScores);
+    showLeaderboard()
+}
+
+function getScores() {
+  return JSON.parse(localStorage.getItem("allScores")) ||[];
+}
+
+var scoreListEl = document.getElementById("scorelist");
+function refreshScores() {
+    var refAllScores = getScores()
+    refAllScores.forEach(scoreEntry=>{
+      var entryContainerEl = document.createElement("div")
+      entryContainerEl.textContent = scoreEntry.initials + " " + scoreEntry.score;
+      scoreListEl.appendChild(entryContainerEl);
+    })
+}
+
+
+console.log(getScores());

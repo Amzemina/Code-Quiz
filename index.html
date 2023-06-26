@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav>
-            <a href="high scores">View high scores</a>
+            <a onclick="showLeaderboard()">View Leaderboard</a>
             <div id="timer">Timer:</div>
         </nav>
     </header>
@@ -34,10 +34,16 @@
                 <li><button id="choiceD" onclick="checkAns(value)"></button></li>
             </ul>
         </div>
+        <div id="scorepage" class="hidden">
+            <h1>All done!</h1>
+            <p>Your final score is <span id="score"></span>/60</p>
+            <div>Enter your initials:</div>
+            <input type = "text" id="initials"> 
+            <button onclick="inputScore()">Submit Score</button>
+        </div>
         <div id="leaderboard" class="hidden">
-            <!-- Leaderboard -->
-            Leaderboard!
-            
+            <h1>leaderboard</h1>
+            <div id="scorelist"></div>
         </div>
 
     </main>
