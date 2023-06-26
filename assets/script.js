@@ -15,6 +15,8 @@ var choiceBEL = document.getElementById("choiceB");
 var choiceCEL = document.getElementById("choiceC");
 var choiceDEL = document.getElementById("choiceD");
 var currentQuestion = -1;
+var correctEl = document.getElementById("correct");
+var incorrectEl = document.getElementById("incorrect");
 
 var introDivEl = document.getElementById("intro");
 var quizDivEl = document.getElementById("quiz");
@@ -77,13 +79,19 @@ const questions = [
 function startQuiz() {
     introDivEl.classList.add("hidden");
     quizDivEl.classList.remove("hidden");
+    resetTimer();
     loadQ();
+    refTimer();
     timer();
 }
-
 //Timer functions
 function refTimer() {
     timerEl.textContent = "Timer: " + timeLeft;
+}
+//Resests timer
+function resetTimer() {
+    timeLeft = 60;
+    currentQuestion = -1;
 }
 
 function timer() {
@@ -106,7 +114,6 @@ function deductTime() {
     }
     refTimer();
 }
-
 //Loads questions and choices
 function loadQ() {
     currentQuestion++;
@@ -136,7 +143,18 @@ function isCurrentQuestionValid() {
 //Checks if answer is correct or incorrect--deducts time. Loads next question
 function checkAns(chosenAns) {
     if (chosenAns == questions[currentQuestion].answer) {
+        correctEl.classList.remove("hidden")
+        var hideCorr = setInterval(function () {
+            correctEl.classList.add("hidden") 
+            clearInterval(hideCorr)
+        }, 500);
+
     } else {
+        incorrectEl.classList.remove("hidden")
+        var hideIncor = setInterval(function () {
+            incorrectEl.classList.add("hidden") 
+            clearInterval(hideIncor)
+        }, 500);
         deductTime();
     };
     loadQ();
@@ -155,7 +173,10 @@ function showLeaderboard() {
     scorePageEl.classList.add("hidden");
     introDivEl.classList.add("hidden");
     quizDivEl.classList.add("hidden");
-    refreshScores()
+    clearInterval(timerInterval);
+    resetTimer();
+    refTimer();
+    refreshScores();
 }
 //Goes back to beginning page
 function showIntro() {
