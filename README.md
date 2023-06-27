@@ -2,7 +2,7 @@
 
 
 ## Description
-This is a quiz I made that that challenges the users basic knowledge on HTML, CSS, and JavaScript. Its 60seconds long with 10 questions, if an answer is incorrect 10 seconds is deducted. At the end of the quiz if all questions are answered or the timer reaches 0 you can input your initials with your score and a leaderboard/highscores page is shown with the highest score being at the top. A clear scores button is shown on the bottom of the leaderboard if the user wishes to clear the board, and a back to quiz button that brings the user to the front page. On the front page theres a view leaderboard link, and a timer at the top that starts when the quiz starts. The timer ends and resets when brought back to the front page. 
+This is a quiz I made that challenges the users basic knowledge on HTML, CSS, and JavaScript. Its 60seconds long with 10 questions, if an answer is incorrect 10 seconds is deducted. At the end of the quiz if all questions are answered or the timer reaches 0 you can input your initials with your score and a leaderboard/highscores page is shown with the highest score being at the top. A clear scores button is shown on the bottom of the leaderboard if the user wishes to clear the board, and a back to quiz button that brings the user to the front page. On the front page theres a view leaderboard link, and a timer at the top that starts when the quiz starts. The timer ends and resets when brought back to the front page. 
 I used VSCode to code this project.
 
 
