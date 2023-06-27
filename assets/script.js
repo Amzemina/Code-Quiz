@@ -145,14 +145,14 @@ function checkAns(chosenAns) {
     if (chosenAns == questions[currentQuestion].answer) {
         correctEl.classList.remove("hidden")
         var hideCorr = setInterval(function () {
-            correctEl.classList.add("hidden") 
+            correctEl.classList.add("hidden")
             clearInterval(hideCorr)
         }, 500);
 
     } else {
         incorrectEl.classList.remove("hidden")
         var hideIncor = setInterval(function () {
-            incorrectEl.classList.add("hidden") 
+            incorrectEl.classList.add("hidden")
             clearInterval(hideIncor)
         }, 500);
         deductTime();
@@ -220,6 +220,6 @@ function inputScore() {
 }
 //Clear Scores
 function clearButton() {
-  localStorage.setItem('allScores', JSON.stringify([]));
-  refreshScores()
+    localStorage.setItem('allScores', JSON.stringify([]));
+    refreshScores()
 };
