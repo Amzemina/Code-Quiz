@@ -6,6 +6,11 @@
 * {
     font-family: sans-serif;
 }
+/*header*/
+header {
+    padding: 0 15px;
+    background-color: cadetblue;
+}
 /* nav  */
 nav {
     background-color:cadetblue;
@@ -30,6 +35,7 @@ main {
 }
 
 h1 {
+    padding: 0 10px;
     font-size: 35px;
     background-color: cadetblue;
 }
